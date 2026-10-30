@@ -1,7 +1,10 @@
-// Section dengan judul dan elemen opsional di kanan (jumlah, link, dll)
-export default function Section({ id, title, aside, className = 'mb-20', children }) {
+import { motion } from 'motion/react'
+import { reveal } from '../lib/motion'
+
+// Section dengan judul + elemen opsional di kanan. Muncul halus saat discroll.
+export default function Section({ id, title, aside, className = 'mb-20', animate = true, children }) {
   return (
-    <section id={id} className={`scroll-mt-24 ${className}`}>
+    <motion.section id={id} className={`scroll-mt-24 ${className}`} {...(animate ? reveal : {})}>
       {title && (
         <div className="flex items-baseline justify-between mb-6">
           <h2 className="text-[16px] font-semibold text-gray-900">{title}</h2>
@@ -9,7 +12,7 @@ export default function Section({ id, title, aside, className = 'mb-20', childre
         </div>
       )}
       {children}
-    </section>
+    </motion.section>
   )
 }
 

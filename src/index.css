@@ -12,8 +12,6 @@ html {
 .nav-link { color: #6b7280; transition: color .15s; }
 .nav-link:hover,
 .nav-link.active { color: #111827; }
-.nav-link .arrow { opacity: 0; transition: opacity .15s; }
-.nav-link.active .arrow { opacity: 1; }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }

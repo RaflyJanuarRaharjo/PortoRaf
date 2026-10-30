@@ -7,7 +7,7 @@ export default function ProjectCard({ project }) {
     <Link
       to={`/projects#${project.id}`}
       data-sfx
-      className="sm:col-span-2 border border-gray-200/80 rounded-[1.25rem] p-3 flex flex-col hover:shadow-sm hover:border-gray-300 transition-all group"
+      className="sm:col-span-2 border border-gray-200/80 rounded-[1.25rem] p-3 flex flex-col hover:shadow-md hover:-translate-y-0.5 hover:border-gray-300 transition-all duration-300 group"
     >
       <div className="overflow-hidden rounded-[0.85rem] bg-gray-100 aspect-video">
         <ProjectMedia

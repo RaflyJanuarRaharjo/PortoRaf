@@ -1,8 +1,10 @@
+import { motion } from 'motion/react'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import ProjectMedia from '../components/ProjectMedia'
 import { profile } from '../data/profile'
 import { projects } from '../data/projects'
+import { fadeUp, stagger } from '../lib/motion'
 
 const NAV = projects.map((p) => ({ id: p.id, label: p.name }))
 const IDS = NAV.map((n) => n.id)
@@ -15,15 +17,15 @@ export default function Projects() {
       back={{ to: '/', label: 'Back' }}
       note={`${projects.length} projects. Updated ${profile.updated}.`}
     >
-      <header className="mb-10">
-        <h1 className="text-[19px] font-semibold text-gray-900 tracking-tight">Projects</h1>
-        <p className="text-[14.5px] text-gray-500 mt-0.5">Selected work by {profile.name}.</p>
-      </header>
+      <motion.header variants={stagger} initial="hidden" animate="show" className="mb-10">
+        <motion.h1 variants={fadeUp} className="text-[19px] font-semibold text-gray-900 tracking-tight">Projects</motion.h1>
+        <motion.p variants={fadeUp} className="text-[14.5px] text-gray-500 mt-0.5">Selected work by {profile.name}.</motion.p>
+      </motion.header>
 
       {projects.map((p) => (
         <Section key={p.id} id={p.id} className="mb-16">
-          <div className="overflow-hidden rounded-[1.25rem] border border-gray-200/80 bg-gray-50 aspect-video">
-            <ProjectMedia media={p.media} alt={p.name} />
+          <div className="group overflow-hidden rounded-[1.25rem] border border-gray-200/80 bg-gray-50 aspect-video">
+            <ProjectMedia media={p.media} alt={p.name} className="transition-transform duration-700 group-hover:scale-[1.03]" />
           </div>
           <div className="flex items-start justify-between gap-4 mt-5">
             <div>
@@ -36,9 +38,9 @@ export default function Projects() {
               target="_blank"
               rel="noopener"
               data-sfx
-              className="flex-shrink-0 inline-flex items-center gap-1 text-[14px] text-gray-500 hover:text-gray-900 transition-colors"
+              className="group flex-shrink-0 inline-flex items-center gap-1 text-[14px] text-gray-500 hover:text-gray-900 transition-colors"
             >
-              Visit <span>↗</span>
+              Visit <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
           </div>
         </Section>
