@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar sidebar */
+.nav-link { color: #6b7280; transition: color .15s; }
+.nav-link:hover,
+.nav-link.active { color: #111827; }
+.nav-link .arrow { opacity: 0; transition: opacity .15s; }
+.nav-link.active .arrow { opacity: 1; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
