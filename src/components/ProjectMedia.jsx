@@ -1,6 +1,6 @@
-import { FolderIcon, OklchIcon } from './icons'
+import { FolderIcon } from './icons'
 
-const icons = { folder: FolderIcon, oklch: OklchIcon }
+const icons = { folder: FolderIcon }
 
 export default function ProjectMedia({ media, alt, className = '' }) {
   if (media.type === 'video') {
