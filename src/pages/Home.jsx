@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import Section, { Count } from '../components/Section'
 import ShowMore from '../components/ShowMore'
 import ProjectCard from '../components/ProjectCard'
+import Logo from '../components/Logo'
+import Gallery from '../components/Gallery'
 import { ArrowRight } from '../components/icons'
 import { profile } from '../data/profile'
 import { achievements } from '../data/achievements'
@@ -79,6 +81,7 @@ export default function Home() {
                   </div>
                   <div className="text-[13.5px] text-gray-500 mt-0.5">{a.issuer}</div>
                   <p className="text-[14.5px] text-gray-600 leading-[1.6] mt-2">{a.description}</p>
+                  <Gallery images={a.images} />
                 </motion.li>
               ))}
               </AnimatePresence>
@@ -109,13 +112,17 @@ export default function Home() {
             <div className="flex flex-col gap-8">
               <AnimatePresence initial={false}>
               {items.map((e, i) => (
-                <motion.div key={e.company + e.period} {...listItem(i - 4)}>
-                  <div className="flex justify-between items-start gap-4 mb-1">
-                    <h3 className="font-medium text-[15px] text-gray-900">{e.role}</h3>
-                    <span className="bg-gray-100/80 text-gray-500 text-[13px] px-2.5 py-1 rounded-md whitespace-nowrap">{e.period}</span>
+                <motion.div key={e.company + e.period} {...listItem(i - 4)} className="flex gap-4">
+                  <Logo src={e.logo} name={e.company} />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-start gap-4 mb-1">
+                      <h3 className="font-medium text-[15px] text-gray-900">{e.role}</h3>
+                      <span className="bg-gray-100/80 text-gray-500 text-[13px] px-2.5 py-1 rounded-md whitespace-nowrap">{e.period}</span>
+                    </div>
+                    <div className="text-[14.5px] text-gray-700 font-medium">{e.company}</div>
+                    {e.description && <p className="text-[14.5px] text-gray-500 leading-[1.6] mt-2">{e.description}</p>}
+                    <Gallery images={e.images} />
                   </div>
-                  <div className="text-[14.5px] text-gray-700 font-medium">{e.company}</div>
-                  {e.description && <p className="text-[14.5px] text-gray-500 leading-[1.6] mt-2">{e.description}</p>}
                 </motion.div>
               ))}
               </AnimatePresence>

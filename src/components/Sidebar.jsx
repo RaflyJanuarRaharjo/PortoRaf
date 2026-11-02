@@ -8,12 +8,15 @@ const spring = { type: 'spring', stiffness: 500, damping: 35 }
 
 export default function Sidebar({ items, active, onSelect, note, back, className = '' }) {
   const refs = useRef({})
+  const navRef = useRef(null)
 
-  // Di mobile, geser menu aktif ke tengah bar
+  // Di mobile, geser menu aktif ke tengah bar (horizontal saja, halaman tidak ikut bergeser)
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      refs.current[active]?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' })
-    }
+    const nav = navRef.current
+    const el = refs.current[active]
+    if (!nav || !el || window.innerWidth >= 768) return
+    const left = el.offsetLeft - nav.clientWidth / 2 + el.clientWidth / 2
+    nav.scrollTo({ left: Math.max(0, left), behavior: 'smooth' })
   }, [active])
 
   return (
@@ -24,19 +27,19 @@ export default function Sidebar({ items, active, onSelect, note, back, className
       className={`${className} md:w-40 flex-shrink-0 sticky top-0 z-40 -mx-6 px-6 bg-white/90 backdrop-blur border-y border-gray-100 md:border-0 md:mx-0 md:px-0 md:bg-transparent md:backdrop-blur-none md:static`}
     >
       <div className="md:sticky md:top-24 md:pl-4">
-        <div className="flex md:flex-col items-center md:items-start gap-7 md:gap-0 py-3 md:py-0">
+        <div className="flex md:flex-col items-center md:items-start gap-7 md:gap-0">
           {back && (
             <Link
               to={back.to}
               data-sfx
-              className="group inline-flex items-center gap-1.5 text-[14px] text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap md:mb-6"
+              className="group flex-shrink-0 inline-flex items-center gap-1.5 text-[14px] text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap py-3 md:py-0 md:mb-6"
             >
               <span className="transition-transform duration-200 group-hover:-translate-x-0.5"><ArrowLeft /></span>
               {back.label}
             </Link>
           )}
 
-          <nav className="flex md:flex-col gap-7 md:gap-3 overflow-x-auto md:overflow-visible no-scrollbar">
+          <nav ref={navRef} className="flex md:flex-col gap-7 md:gap-3 py-3 md:py-0 overflow-x-auto overflow-y-hidden md:overflow-visible no-scrollbar touch-pan-x">
             {items.map((item) => {
               const isActive = active === item.id
               return (
@@ -46,7 +49,7 @@ export default function Sidebar({ items, active, onSelect, note, back, className
                   href={`#${item.id}`}
                   data-sfx
                   onClick={() => onSelect(item.id)}
-                  className={`nav-link ${isActive ? 'active' : ''} relative whitespace-nowrap text-[15px] leading-[1.7] transition-transform duration-200 md:hover:translate-x-0.5`}
+                  className={`nav-link ${isActive ? 'active' : ''} relative flex-shrink-0 whitespace-nowrap text-[15px] leading-[1.7] pb-1 md:pb-0 transition-transform duration-200 md:hover:translate-x-0.5`}
                 >
                   {/* Penanda aktif desktop: segitiga yang meluncur */}
                   {isActive && (
@@ -63,7 +66,7 @@ export default function Sidebar({ items, active, onSelect, note, back, className
                     <motion.span
                       layoutId="nav-underline"
                       transition={spring}
-                      className="md:hidden absolute -bottom-3 left-0 right-0 h-px bg-gray-900"
+                      className="md:hidden absolute bottom-0 left-0 right-0 h-px bg-gray-900"
                     />
                   )}
                   {item.label}
