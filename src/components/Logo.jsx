@@ -15,7 +15,6 @@ export default function Logo({ src, name }) {
     .toUpperCase()
 
   return (
-    <div className="w-10 h-10 flex-shrink-0 rounded-[10px] border border-gray-200/80 bg-white overflow-hidden flex items-center justify-center">
       {src && !failed ? (
         <img src={src} alt={name} className="w-full h-full object-contain p-1" onError={() => setFailed(true)} />
       ) : (
