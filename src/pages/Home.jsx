@@ -26,41 +26,45 @@ const linkClass =
 export default function Home() {
   const featured = projects.filter((p) => p.featured)
 
-  return (
-    <Layout navItems={NAV} ids={IDS} note={`Personal design log. Updated ${profile.updated}.`}>
-      {/* About: muncul bergantian saat halaman dibuka */}
-      <Section id="about" animate={false}>
-        <motion.div variants={stagger} initial="hidden" animate="show">
-          <motion.img
-            variants={fadeUp}
-            whileHover={{ scale: 1.08, rotate: -4 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-            src={profile.avatar}
-            alt={profile.name}
-            className="w-16 h-16 rounded-full object-cover shadow-sm mb-4 cursor-pointer"
-          />
-          <motion.h1 variants={fadeUp} className="text-[19px] font-semibold text-gray-900 tracking-tight">{profile.name}</motion.h1>
-          <motion.p variants={fadeUp} className="text-[14.5px] text-gray-500 mt-0.5 flex items-center gap-2">
-            <span className="relative flex w-2 h-2">
-              <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500" />
-            </span>
-            {profile.role}
-          </motion.p>
-          <div className="text-[14.5px] text-gray-600 mt-5 leading-[1.6] space-y-4 max-w-[600px]">
-            <motion.p variants={fadeUp}>{profile.intro}</motion.p>
-            <motion.p variants={fadeUp}>
-              Previously, I worked at {profile.previously}. You can find me on{' '}
-              <a href={profile.instagram.url} target="_blank" rel="noopener" data-sfx className={linkClass}>
-                {profile.instagram.handle}
-              </a>{' '}
-              and via{' '}
-              <a href="#contact" data-sfx className={linkClass}>email</a>.
+  const intro = (
+    <>
+        {/* About: muncul bergantian saat halaman dibuka */}
+        <Section id="about" animate={false} className="mb-8 md:mb-20">
+          <motion.div variants={stagger} initial="hidden" animate="show">
+            <motion.img
+              variants={fadeUp}
+              whileHover={{ scale: 1.08, rotate: -4 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+              src={profile.avatar}
+              alt={profile.name}
+              className="w-16 h-16 rounded-full object-cover shadow-sm mb-4 cursor-pointer"
+            />
+            <motion.h1 variants={fadeUp} className="text-[19px] font-semibold text-gray-900 tracking-tight">{profile.name}</motion.h1>
+            <motion.p variants={fadeUp} className="text-[14.5px] text-gray-500 mt-0.5 flex items-center gap-2">
+              <span className="relative flex w-2 h-2">
+                <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
+                <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500" />
+              </span>
+              {profile.role}
             </motion.p>
-          </div>
-        </motion.div>
-      </Section>
+            <div className="text-[14.5px] text-gray-600 mt-5 leading-[1.6] space-y-4 max-w-[600px]">
+              <motion.p variants={fadeUp}>{profile.intro}</motion.p>
+              <motion.p variants={fadeUp}>
+                Previously, I worked at {profile.previously}. You can find me on{' '}
+                <a href={profile.instagram.url} target="_blank" rel="noopener" data-sfx className={linkClass}>
+                  {profile.instagram.handle}
+                </a>{' '}
+                and via{' '}
+                <a href="#contact" data-sfx className={linkClass}>email</a>.
+              </motion.p>
+            </div>
+          </motion.div>
+        </Section>
+    </>
+  )
 
+  return (
+    <Layout navItems={NAV} ids={IDS} intro={intro} note={`Personal design log. Updated ${profile.updated}.`}>
       {/* Achievement */}
       <Section id="achievement" title="Achievement" aside={<Count>{achievements.length} awards</Count>}>
         <ShowMore items={achievements} limit={3} sectionId="achievement">

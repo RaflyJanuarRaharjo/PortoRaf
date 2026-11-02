@@ -6,7 +6,7 @@ import { ease } from '../lib/motion'
 
 const spring = { type: 'spring', stiffness: 500, damping: 35 }
 
-export default function Sidebar({ items, active, onSelect, note, back }) {
+export default function Sidebar({ items, active, onSelect, note, back, className = '' }) {
   const refs = useRef({})
 
   // Di mobile, geser menu aktif ke tengah bar
@@ -21,7 +21,7 @@ export default function Sidebar({ items, active, onSelect, note, back }) {
       initial={{ opacity: 0, x: -8 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, ease }}
-      className="md:w-40 flex-shrink-0 sticky top-0 z-40 -mx-6 px-6 bg-white/90 backdrop-blur border-b border-gray-100 md:border-0 md:mx-0 md:px-0 md:bg-transparent md:static"
+      className={`${className} md:w-40 flex-shrink-0 sticky top-0 z-40 -mx-6 px-6 bg-white/90 backdrop-blur border-y border-gray-100 md:border-0 md:mx-0 md:px-0 md:bg-transparent md:backdrop-blur-none md:static`}
     >
       <div className="md:sticky md:top-24 md:pl-4">
         <div className="flex md:flex-col items-center md:items-start gap-7 md:gap-0 py-3 md:py-0">
