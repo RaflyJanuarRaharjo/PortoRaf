@@ -18,7 +18,6 @@ const NAV = [
   { id: 'achievement', label: 'Achievement' },
   { id: 'project', label: 'Project' },
   { id: 'experience', label: 'Experience' },
-  { id: 'contact', label: 'Contact' },
 ]
 const IDS = NAV.map((n) => n.id)
 
@@ -47,17 +46,28 @@ export default function Home() {
                 <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
                 <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500" />
               </span>
-              {profile.role}
+              <span>
+                {profile.role}{' '}
+                <a href={profile.company.url} target="_blank" rel="noopener" data-sfx className={linkClass}>
+                  {profile.company.name}
+                </a>
+              </span>
             </motion.p>
             <div className="text-[14.5px] text-gray-600 mt-5 leading-[1.6] space-y-4 max-w-[600px]">
-              <motion.p variants={fadeUp}>{profile.intro}</motion.p>
+              <motion.p variants={fadeUp}>
+              {profile.introPrefix}{' '}
+              <a href={profile.company.url} target="_blank" rel="noopener" data-sfx className={linkClass}>
+                {profile.company.name}
+              </a>
+              , {profile.intro}
+            </motion.p>
               <motion.p variants={fadeUp}>
                 Previously, I worked at {profile.previously}. You can find me on{' '}
                 <a href={profile.instagram.url} target="_blank" rel="noopener" data-sfx className={linkClass}>
                   {profile.instagram.handle}
                 </a>{' '}
                 and via{' '}
-                <a href="#contact" data-sfx className={linkClass}>email</a>.
+                <a href={`mailto:${profile.email}`} data-sfx className={linkClass}>email</a>.
               </motion.p>
             </div>
           </motion.div>
@@ -131,21 +141,7 @@ export default function Home() {
         </ShowMore>
       </Section>
 
-      {/* Contact */}
-      <Section id="contact" title="Contact" className="mb-16">
-        <div className="p-6 border border-gray-100 rounded-xl bg-gray-50/50">
-          <p className="text-[14.5px] text-gray-600 leading-[1.6]">{profile.contactText}</p>
-          <div className="flex flex-wrap gap-2 mt-4">
-            <a href={`mailto:${profile.email}`} data-sfx className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-[8px] hover:bg-gray-700 transition-colors">
-              Send email
-            </a>
-            <a href={profile.instagram.url} target="_blank" rel="noopener" data-sfx className="px-4 py-2 border border-gray-200 bg-white text-gray-700 text-sm font-medium rounded-[8px] hover:border-gray-300 hover:text-gray-900 transition-colors">
-              {profile.instagram.handle}
-            </a>
-          </div>
-        </div>
-        <p className="text-[13px] text-gray-400 mt-10">© 2026 {profile.name}</p>
-      </Section>
+      <p className="text-[13px] text-gray-400 mb-16">© 2026 {profile.name}</p>
     </Layout>
   )
 }
