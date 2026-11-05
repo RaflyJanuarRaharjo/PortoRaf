@@ -5,8 +5,7 @@ import Layout from '../components/Layout'
 import Section from '../components/Section'
 import ProjectMedia from '../components/ProjectMedia'
 import ToolLogos from '../components/ToolLogos'
-import { ArrowRight } from '../components/icons'
-import { getProject, projects } from '../data/projects'
+import { getProject } from '../data/projects'
 import { fadeUp, stagger } from '../lib/motion'
 
 // Menu sidebar: hanya section yang ada isinya
@@ -39,9 +38,6 @@ export default function ProjectDetail() {
 
   if (!project) return <Navigate to="/projects" replace />
 
-  const index = projects.findIndex((p) => p.id === id)
-  const next = projects[(index + 1) % projects.length]
-
   return (
     <Layout
       key={id}
@@ -71,21 +67,6 @@ export default function ProjectDetail() {
           </motion.div>
         )}
 
-        {project.url && (
-          <motion.div variants={fadeUp} className="mt-6">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener"
-              data-sfx
-              className="group inline-flex items-center gap-1.5 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-[8px] hover:bg-gray-700 transition-colors"
-            >
-              Visit site
-              <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-            </a>
-          </motion.div>
-        )}
-
         <motion.div variants={fadeUp} className="mt-8 overflow-hidden rounded-[1.25rem] border border-gray-200/80 bg-gray-50 aspect-video">
           <ProjectMedia media={project.media} alt={project.name} />
         </motion.div>
@@ -105,6 +86,19 @@ export default function ProjectDetail() {
             </div>
           )}
         </motion.dl>
+        {project.url && (
+          <motion.a
+            variants={fadeUp}
+            href={project.url}
+            target="_blank"
+            rel="noopener"
+            data-sfx
+            className="group mt-8 flex w-full items-center justify-center gap-1.5 px-4 py-3 bg-gray-900 text-white text-[14.5px] font-medium rounded-xl hover:bg-gray-700 transition-colors"
+          >
+            Visit site
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+          </motion.a>
+        )}
       </motion.header>
 
       {project.overview?.length > 0 && (
@@ -129,27 +123,11 @@ export default function ProjectDetail() {
       )}
 
       {project.tools?.length > 0 && (
-        <Section id="tools" title="Tools" className="mb-14">
+        <Section id="tools" title="Tools" className="mb-20">
           <ToolLogos tools={project.tools} />
         </Section>
       )}
 
-      {/* Next project */}
-      {next && next.id !== project.id && (
-        <Link
-          to={`/projects/${next.id}`}
-          data-sfx
-          className="group flex items-center justify-between gap-4 border-t border-gray-100 pt-8 mt-4 mb-16"
-        >
-          <div>
-            <p className="text-[13px] text-gray-400">Next project</p>
-            <p className="text-[18px] font-medium text-gray-900 mt-1">{next.name}</p>
-          </div>
-          <span className="text-gray-400 group-hover:text-gray-900 transition-all duration-200 group-hover:translate-x-1">
-            <ArrowRight size={18} />
-          </span>
-        </Link>
-      )}
     </Layout>
   )
 }
