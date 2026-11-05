@@ -62,7 +62,7 @@ export default function Home() {
                   {profile.instagram.handle}
                 </a>{' '}
                 and via{' '}
-                <a href={`mailto:${profile.email}`} data-sfx className={linkClass}>email</a>.
+                <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`} target="_blank" rel="noopener" data-sfx className={linkClass}>email</a>.
               </motion.p>
             </div>
           </motion.div>
