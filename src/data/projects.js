@@ -6,9 +6,8 @@
 // services  : apa yang kamu kerjakan
 // overview / challenge / outcome : paragraf (array of string)
 // result    : satu kalimat hasil (opsional, boleh dihapus)
-// gallery   : simpan gambar di public/projects/<id>/ lalu daftarkan di sini
-// tools     : alat yang dipakai
-// url       : link live website (tombol "Visit website" di halaman detail)
+// tools     : alat yang dipakai -> tampil sebagai logo (daftar logo di components/ToolLogos.jsx)
+// url       : link live website (tombol "Visit site" di halaman detail)
 
 export const projects = [
   {
@@ -34,14 +33,6 @@ export const projects = [
       'Testimonials and a bold orange closing CTA (“build your next product with a team of agents”) finish the page with a friendly mascot.',
     ],
     result: 'Designed and shipped as a live Next.js site on Vercel.',
-    gallery: [
-      { src: '/projects/nietzsche/2.jpg', caption: 'Hero with prompt box' },
-      { src: '/projects/nietzsche/3.jpg', caption: 'Mission statement' },
-      { src: '/projects/nietzsche/4.jpg', caption: 'Meet the agents' },
-      { src: '/projects/nietzsche/5.jpg', caption: 'Closing CTA' },
-      { src: '/projects/nietzsche/6.jpg', caption: 'Footer' },
-      { src: '/projects/nietzsche/1.jpg', caption: 'Brand mark' },
-    ],
     tools: ['Figma', 'Next.js', 'React', 'Tailwind CSS', 'Vercel'],
   },
   {
@@ -66,14 +57,6 @@ export const projects = [
       'An integrations section shows how Rhythm plugs into the tools teams already use.',
     ],
     result: 'Taken from a single Dribbble shot to a live Next.js site.',
-    gallery: [
-      { src: '/projects/rhythm/1.jpg', caption: 'Hero & dashboard preview' },
-      { src: '/projects/rhythm/2.jpg', caption: 'Social proof' },
-      { src: '/projects/rhythm/3.jpg', caption: 'Features' },
-      { src: '/projects/rhythm/4.jpg', caption: 'How it works' },
-      { src: '/projects/rhythm/5.jpg', caption: 'Integrations' },
-      { src: '/projects/rhythm/6.jpg', caption: 'Integration map' },
-    ],
     tools: ['Figma', 'Next.js', 'React', 'Tailwind CSS', 'Vercel'],
   },
 ]

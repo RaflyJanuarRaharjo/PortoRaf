@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { AnimatePresence, motion } from 'motion/react'
+import { motion } from 'motion/react'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import ProjectMedia from '../components/ProjectMedia'
+import ToolLogos from '../components/ToolLogos'
 import { ArrowRight } from '../components/icons'
 import { getProject, projects } from '../data/projects'
 import { fadeUp, stagger } from '../lib/motion'
@@ -13,7 +14,6 @@ const SECTIONS = [
   { id: 'overview', label: 'Overview', key: 'overview' },
   { id: 'challenge', label: 'Challenge', key: 'challenge' },
   { id: 'outcome', label: 'Outcome', key: 'outcome' },
-  { id: 'gallery', label: 'Gallery', key: 'gallery' },
   { id: 'tools', label: 'Tools', key: 'tools' },
 ]
 
@@ -30,7 +30,6 @@ const Chip = ({ children }) => (
 export default function ProjectDetail() {
   const { id } = useParams()
   const project = getProject(id)
-  const [zoom, setZoom] = useState(null)
 
   const nav = useMemo(
     () => (project ? SECTIONS.filter((s) => project[s.key]?.length) : []),
@@ -72,12 +71,27 @@ export default function ProjectDetail() {
           </motion.div>
         )}
 
+        {project.url && (
+          <motion.div variants={fadeUp} className="mt-6">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener"
+              data-sfx
+              className="group inline-flex items-center gap-1.5 px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-[8px] hover:bg-gray-700 transition-colors"
+            >
+              Visit site
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+            </a>
+          </motion.div>
+        )}
+
         <motion.div variants={fadeUp} className="mt-8 overflow-hidden rounded-[1.25rem] border border-gray-200/80 bg-gray-50 aspect-video">
           <ProjectMedia media={project.media} alt={project.name} />
         </motion.div>
 
         {/* Info singkat */}
-        <motion.dl variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8 text-[14px]">
+        <motion.dl variants={fadeUp} className="grid grid-cols-2 gap-6 mt-8 text-[14px]">
           {project.year && (
             <div>
               <dt className="text-gray-400 text-[13px]">Year</dt>
@@ -88,16 +102,6 @@ export default function ProjectDetail() {
             <div className="col-span-2 sm:col-span-1">
               <dt className="text-gray-400 text-[13px]">Services</dt>
               <dd className="text-gray-900 mt-1 leading-[1.6]">{project.services.join(', ')}</dd>
-            </div>
-          )}
-          {project.url && project.url !== '#' && (
-            <div>
-              <dt className="text-gray-400 text-[13px]">Live</dt>
-              <dd className="mt-1">
-                <a href={project.url} target="_blank" rel="noopener" data-sfx className="group inline-flex items-center gap-1 text-gray-900 underline decoration-gray-300 underline-offset-4 hover:decoration-gray-900 transition-colors">
-                  Visit website <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                </a>
-              </dd>
             </div>
           )}
         </motion.dl>
@@ -124,37 +128,9 @@ export default function ProjectDetail() {
         </Section>
       )}
 
-      {project.gallery?.length > 0 && (
-        <Section id="gallery" title="Gallery" aside={<span className="text-[13px] text-gray-400">{project.gallery.length} images</span>} className="mb-14">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {project.gallery.map((img, i) => (
-              <button
-                key={img.src}
-                type="button"
-                data-sfx
-                onClick={() => setZoom(i)}
-                className={`group text-left ${i === 0 ? 'sm:col-span-2' : ''}`}
-              >
-                <div className="overflow-hidden rounded-xl border border-gray-200/80 bg-gray-50 aspect-video">
-                  <img
-                    src={img.src}
-                    alt={img.caption || project.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-                {img.caption && <p className="text-[13px] text-gray-400 mt-2">{img.caption}</p>}
-              </button>
-            ))}
-          </div>
-        </Section>
-      )}
-
       {project.tools?.length > 0 && (
         <Section id="tools" title="Tools" className="mb-14">
-          <div className="flex flex-wrap gap-1.5">
-            {project.tools.map((t) => <Chip key={t}>{t}</Chip>)}
-          </div>
+          <ToolLogos tools={project.tools} />
         </Section>
       )}
 
@@ -174,36 +150,6 @@ export default function ProjectDetail() {
           </span>
         </Link>
       )}
-
-      {/* Lightbox galeri */}
-      <AnimatePresence>
-        {zoom !== null && (
-          <motion.div
-            className="fixed inset-0 z-[60] bg-black/85 backdrop-blur-sm flex flex-col items-center justify-center p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setZoom(null)}
-          >
-            <motion.img
-              key={project.gallery[zoom].src}
-              src={project.gallery[zoom].src}
-              alt={project.gallery[zoom].caption || ''}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="max-w-full max-h-[80vh] rounded-lg object-contain"
-              onClick={(e) => {
-                e.stopPropagation()
-                setZoom((zoom + 1) % project.gallery.length)
-              }}
-            />
-            <p className="text-white/80 text-[14px] mt-4">
-              {project.gallery[zoom].caption} <span className="text-white/40">· {zoom + 1}/{project.gallery.length}</span>
-            </p>
-            <p className="text-white/40 text-[12px] mt-1">Klik gambar untuk berikutnya, klik di luar untuk menutup</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </Layout>
   )
 }

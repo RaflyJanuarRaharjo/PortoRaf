@@ -3,7 +3,6 @@ import { useState } from 'react'
 // Logo perusahaan. Kalau src kosong / gagal dimuat -> tampil inisial nama.
 export default function Logo({ src, name }) {
   const [failed, setFailed] = useState(false)
-
   // Ambil nama perusahaan saja (sebelum "(" atau "·"), lalu huruf depan max 2 kata
   const initials = name
     .split(/[(·|]/)[0]
