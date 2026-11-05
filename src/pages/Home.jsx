@@ -15,9 +15,9 @@ import { fadeUp, listItem, stagger } from '../lib/motion'
 
 const NAV = [
   { id: 'about', label: 'About me' },
-  { id: 'achievement', label: 'Achievement' },
-  { id: 'project', label: 'Project' },
   { id: 'experience', label: 'Experience' },
+  { id: 'project', label: 'Project' },
+  { id: 'achievement', label: 'Achievement' },
 ]
 const IDS = NAV.map((n) => n.id)
 
@@ -77,44 +77,6 @@ export default function Home() {
 
   return (
     <Layout navItems={NAV} ids={IDS} intro={intro} note={`Personal design log. Updated ${profile.updated}.`}>
-      {/* Achievement */}
-      <Section id="achievement" title="Achievement" aside={<Count>{achievements.length} awards</Count>}>
-        <ShowMore items={achievements} limit={3} sectionId="achievement">
-          {(items) => (
-            <ul className="divide-y divide-gray-100">
-              <AnimatePresence initial={false}>
-              {items.map((a, i) => (
-                <motion.li key={a.title} {...listItem(i - 3)} className="py-5 first:pt-0">
-                  <div className="flex justify-between items-start gap-4">
-                    <h3 className="font-medium text-[15px] text-gray-900 leading-[1.5]">{a.title}</h3>
-                    <span className="text-gray-400 text-[13px] whitespace-nowrap mt-0.5">{a.date}</span>
-                  </div>
-                  <div className="text-[13.5px] text-gray-500 mt-0.5">{a.issuer}</div>
-                  <p className="text-[14.5px] text-gray-600 leading-[1.6] mt-2">{a.description}</p>
-                  <Gallery images={a.images} />
-                </motion.li>
-              ))}
-              </AnimatePresence>
-            </ul>
-          )}
-        </ShowMore>
-      </Section>
-
-      {/* Projects */}
-      <Section
-        id="project"
-        title="Projects"
-        aside={
-          <Link to="/projects" data-sfx className="group inline-flex items-center gap-1 text-[13.5px] text-gray-500 hover:text-gray-900 transition-colors">
-            View all <span className="transition-transform duration-200 group-hover:translate-x-0.5"><ArrowRight /></span>
-          </Link>
-        }
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {featured.map((p) => <ProjectCard key={p.id} project={p} />)}
-        </div>
-      </Section>
-
       {/* Experience */}
       <Section id="experience" title="Experience" aside={<Count>{experience.length} roles</Count>}>
         <ShowMore items={experience} limit={4} sectionId="experience" buttonClass="mt-6">
@@ -137,6 +99,44 @@ export default function Home() {
               ))}
               </AnimatePresence>
             </div>
+          )}
+        </ShowMore>
+      </Section>
+
+      {/* Projects */}
+      <Section
+        id="project"
+        title="Projects"
+        aside={
+          <Link to="/projects" data-sfx className="group inline-flex items-center gap-1 text-[13.5px] text-gray-500 hover:text-gray-900 transition-colors">
+            View all <span className="transition-transform duration-200 group-hover:translate-x-0.5"><ArrowRight /></span>
+          </Link>
+        }
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {featured.map((p) => <ProjectCard key={p.id} project={p} />)}
+        </div>
+      </Section>
+
+      {/* Achievement */}
+      <Section id="achievement" title="Achievement" aside={<Count>{achievements.length} awards</Count>}>
+        <ShowMore items={achievements} limit={3} sectionId="achievement">
+          {(items) => (
+            <ul className="divide-y divide-gray-100">
+              <AnimatePresence initial={false}>
+              {items.map((a, i) => (
+                <motion.li key={a.title} {...listItem(i - 3)} className="py-5 first:pt-0">
+                  <div className="flex justify-between items-start gap-4">
+                    <h3 className="font-medium text-[15px] text-gray-900 leading-[1.5]">{a.title}</h3>
+                    <span className="text-gray-400 text-[13px] whitespace-nowrap mt-0.5">{a.date}</span>
+                  </div>
+                  <div className="text-[13.5px] text-gray-500 mt-0.5">{a.issuer}</div>
+                  <p className="text-[14.5px] text-gray-600 leading-[1.6] mt-2">{a.description}</p>
+                  <Gallery images={a.images} />
+                </motion.li>
+              ))}
+              </AnimatePresence>
+            </ul>
           )}
         </ShowMore>
       </Section>
