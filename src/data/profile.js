@@ -8,6 +8,6 @@ export const profile = {
   introPrefix: "I'm a founding designer at",
   previously: 'Alfagift and Gridbrid',
   instagram: { handle: '@rafly_jnr', url: 'https://instagram.com/rafly_jnr' },
-  email: 'youremail@example.com', // GANTI dengan email kamu
+  email: 'januarrafly641@gmail.com', // GANTI dengan email kamu
   updated: 'Oct 2026',
 }
