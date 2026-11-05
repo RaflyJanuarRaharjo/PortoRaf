@@ -46,12 +46,7 @@ export default function Home() {
                 <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
                 <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500" />
               </span>
-              <span>
-                {profile.role}{' '}
-                <a href={profile.company.url} target="_blank" rel="noopener" data-sfx className={linkClass}>
-                  {profile.company.name}
-                </a>
-              </span>
+              {profile.status}
             </motion.p>
             <div className="text-[14.5px] text-gray-600 mt-5 leading-[1.6] space-y-4 max-w-[600px]">
               <motion.p variants={fadeUp}>

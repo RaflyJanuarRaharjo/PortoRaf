@@ -18,7 +18,8 @@ export const experience = [
     company: 'Lab Sistem Informasi FILKOM UB',
     logo: '/logos/filkom-ub.png',
     period: 'Jun 2026 - Jul 2026',
-    description: '',
+    description:
+      'Supported practicum sessions and research activities at the Information Systems Lab, helping students troubleshoot problems and keeping lab work running smoothly.',
     images: [
       { src: '/images/filkom-ub-1.jpg', caption: 'Dokumentasi' },
     ],

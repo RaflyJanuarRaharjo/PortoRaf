@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Rafly Januar R',
-  role: 'Founder at',
+  status: 'Available for projects',
   company: { name: 'Nara Studio', url: '#' }, // GANTI url dengan link Nara Studio
   avatar: '/avatar.jpg',
   intro:
