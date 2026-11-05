@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import ProjectMedia from './ProjectMedia'
 
-// Kartu project di halaman utama -> menuju detail di /projects
+// Kartu project di halaman utama -> menuju halaman case study
 export default function ProjectCard({ project }) {
   return (
     <Link
-      to={`/projects#${project.id}`}
+      to={`/projects/${project.id}`}
       data-sfx
       className="sm:col-span-2 border border-gray-200/80 rounded-[1.25rem] p-3 flex flex-col hover:shadow-md hover:-translate-y-0.5 hover:border-gray-300 transition-all duration-300 group"
     >

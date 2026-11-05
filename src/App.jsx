@@ -4,6 +4,7 @@ import { SoundProvider } from './hooks/useSfx'
 import SoundToggle from './components/SoundToggle'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
 
 export default function App() {
   const location = useLocation()
@@ -24,6 +25,7 @@ export default function App() {
             <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<ProjectDetail />} />
             </Routes>
           </motion.div>
         </AnimatePresence>

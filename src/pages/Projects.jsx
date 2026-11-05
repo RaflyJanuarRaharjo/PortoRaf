@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
@@ -24,25 +25,21 @@ export default function Projects() {
 
       {projects.map((p) => (
         <Section key={p.id} id={p.id} className="mb-16">
-          <div className="group overflow-hidden rounded-[1.25rem] border border-gray-200/80 bg-gray-50 aspect-video">
-            <ProjectMedia media={p.media} alt={p.name} className="transition-transform duration-700 group-hover:scale-[1.03]" />
-          </div>
-          <div className="flex items-start justify-between gap-4 mt-5">
-            <div>
-              <h2 className="font-medium text-[16px] text-gray-900">{p.name}</h2>
-              <p className="text-gray-500 text-[14.5px] mt-1 leading-[1.6]">{p.description}</p>
-              {p.stack && <p className="text-gray-400 text-[13px] mt-2">{p.stack}</p>}
+          <Link to={`/projects/${p.id}`} data-sfx className="group block">
+            <div className="overflow-hidden rounded-[1.25rem] border border-gray-200/80 bg-gray-50 aspect-video group-hover:border-gray-300 transition-colors">
+              <ProjectMedia media={p.media} alt={p.name} className="transition-transform duration-700 group-hover:scale-[1.03]" />
             </div>
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener"
-              data-sfx
-              className="group flex-shrink-0 inline-flex items-center gap-1 text-[14px] text-gray-500 hover:text-gray-900 transition-colors"
-            >
-              Visit <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-            </a>
-          </div>
+            <div className="flex items-start justify-between gap-4 mt-5">
+              <div>
+                <h2 className="font-medium text-[16px] text-gray-900">{p.name}</h2>
+                <p className="text-gray-500 text-[14.5px] mt-1 leading-[1.6]">{p.description}</p>
+                {p.tags?.length > 0 && <p className="text-gray-400 text-[13px] mt-2">{p.tags.join(' · ')}</p>}
+              </div>
+              <span className="flex-shrink-0 inline-flex items-center gap-1 text-[14px] text-gray-500 group-hover:text-gray-900 transition-colors whitespace-nowrap">
+                View case <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </span>
+            </div>
+          </Link>
         </Section>
       ))}
 
