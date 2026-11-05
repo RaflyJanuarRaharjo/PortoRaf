@@ -21,14 +21,14 @@ export const projects = [
     media: { type: 'video', src: '/videos/nietzsche.mp4' },
     featured: true,
     overview: [
-      'Nietzsche is a concept for a software house run by AI agents. Instead of one assistant, five specialized agents — Architect, Designer, Builder, Tester, and Optimizer — work together to turn a brief into functional software.',
+      'Nietzsche is a concept for a software house run by AI agents. Instead of one assistant, five specialized agents (Architect, Designer, Builder, Tester, and Optimizer) work together to turn a brief into functional software.',
       'I designed the landing page in Figma and built it with Next.js, using orange as the brand color and a set of 3D mascots to give each agent its own personality.',
     ],
     challenge: [
       'Most AI product pages look the same: dark gradients, abstract blobs, and vague promises. The goal was to explain a multi-agent workflow clearly while keeping it playful and memorable.',
     ],
     outcome: [
-      'The hero starts with a prompt box that accepts files like a brief, a character, and references — showing the product idea in one glance.',
+      'The hero starts with a prompt box that accepts files like a brief, a character, and references, showing the product idea in one glance.',
       'An “agents” section gives each role a distinct isometric illustration and one-line description, so visitors understand who does what without reading a wall of text.',
       'Testimonials and a bold orange closing CTA (“build your next product with a team of agents”) finish the page with a friendly mascot.',
     ],
@@ -49,7 +49,7 @@ export const projects = [
       'It started as a Dribbble shot in Figma and was then built into a full responsive landing page with Next.js.',
     ],
     challenge: [
-      'Productivity tools promise a lot. The page needed to show the actual product — schedule, AI priorities, weekly progress — so the value is visible before any copy is read.',
+      'Productivity tools promise a lot. The page needed to show the actual product (schedule, AI priorities, weekly progress) so the value is visible before any copy is read.',
     ],
     outcome: [
       'The hero pairs a short headline with a realistic dashboard preview: today’s schedule, AI-ranked priorities, and focus-time stats.',
