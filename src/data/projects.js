@@ -17,7 +17,7 @@ export const projects = [
     year: '2026',
     tags: ['AI', 'SaaS', 'Landing page'],
     services: ['UI/UX Design', 'Front-end Development', 'Motion'],
-    url: '#', // GANTI dengan URL Vercel
+    url: 'https://nietzche-nu.vercel.app/', // GANTI dengan URL Vercel
     media: { type: 'video', src: '/videos/nietzsche.mp4' },
     featured: true,
     overview: [
@@ -42,7 +42,7 @@ export const projects = [
     year: '2026',
     tags: ['Productivity', 'B2B', 'Landing page'],
     services: ['UI/UX Design', 'Front-end Development'],
-    url: '#', // GANTI dengan URL Vercel
+    url: 'https://rhythm-azure-gamma.vercel.app/', // GANTI dengan URL Vercel
     media: { type: 'video', src: '/videos/rhythm.mp4' },
     overview: [
       'Rhythm (Ritme) is a workspace that turns meetings, chats, and documents into clear priorities and a focused weekly plan.',
