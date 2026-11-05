@@ -135,7 +135,6 @@ export default function Home() {
         </ShowMore>
       </Section>
 
-      <p className="text-[13px] text-gray-400 mb-16">© 2026 {profile.name}</p>
     </Layout>
   )
 }

@@ -43,7 +43,6 @@ export default function Projects() {
         </Section>
       ))}
 
-      <p className="text-[13px] text-gray-400 mt-4 mb-16">© 2026 {profile.name}</p>
     </Layout>
   )
 }

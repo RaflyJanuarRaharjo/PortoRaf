@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import Sidebar from './Sidebar'
+import Footer from './Footer'
 
 // navItems & ids harus konstanta di luar komponen (supaya scroll spy tidak reset)
 // intro (opsional): tampil di atas navbar saat mobile, di kolom kanan saat desktop
@@ -18,6 +19,7 @@ export default function Layout({ navItems, ids, note, back, intro, children }) {
   }, [])
 
   return (
+    <>
     <div className="max-w-5xl mx-auto px-6 py-0 md:py-20 flex flex-col md:grid md:grid-cols-[10rem_minmax(0,42rem)]">
       {intro && (
         <div className="order-1 pt-12 md:pt-0 md:pb-0 md:col-start-2 md:row-start-1 md:border-l md:border-gray-100 md:pl-12 md:ml-6">
@@ -36,5 +38,7 @@ export default function Layout({ navItems, ids, note, back, intro, children }) {
         {children}
       </main>
     </div>
+    <Footer />
+    </>
   )
 }
