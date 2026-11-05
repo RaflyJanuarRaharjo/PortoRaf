@@ -20,7 +20,7 @@ export default function Footer() {
   }
 
   return (
-    <motion.footer {...reveal} className="bg-[#ebe9e4] font-mono uppercase text-[12px] tracking-[0.04em] text-gray-900">
+    <motion.footer {...reveal} className="bg-white border-t border-gray-100 font-mono uppercase text-[12px] tracking-[0.04em] text-gray-900">
       <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 items-start">
           {/* Kiri */}
@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Kanan: form + sosial */}
           <div className="flex flex-col items-center md:items-end gap-5 order-3">
-            <form onSubmit={send} className="flex w-full max-w-[240px] items-center bg-white rounded-lg pl-3 pr-1.5 py-1.5">
+            <form onSubmit={send} className="flex w-full max-w-[240px] items-center bg-white border border-gray-200 focus-within:border-gray-400 transition-colors rounded-lg pl-3 pr-1.5 py-1.5">
               <input
                 value={msg}
                 onChange={(e) => setMsg(e.target.value)}
