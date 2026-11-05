@@ -88,7 +88,6 @@ export default function Home() {
                     </div>
                     <div className="text-[14.5px] text-gray-700 font-medium">{e.company}</div>
                     {e.description && <p className="text-[14.5px] text-gray-500 leading-[1.6] mt-2">{e.description}</p>}
-                    <Gallery images={e.images} />
                   </div>
                 </motion.div>
               ))}
