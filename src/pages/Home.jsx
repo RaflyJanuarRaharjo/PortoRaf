@@ -102,7 +102,7 @@ export default function Home() {
         id="project"
         title="Projects"
         aside={
-          <Link to="/projects" data-sfx className="group inline-flex items-center gap-1 text-[13.5px] text-gray-500 hover:text-gray-900 transition-colors">
+          <Link to="/projects" data-sfx className="group inline-flex items-center gap-1 bg-gray-100/80 hover:bg-gray-200/70 text-gray-500 hover:text-gray-900 text-[13px] px-2.5 py-1 rounded-md transition-colors">
             View all <span className="transition-transform duration-200 group-hover:translate-x-0.5"><ArrowRight /></span>
           </Link>
         }

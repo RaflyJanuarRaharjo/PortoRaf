@@ -32,7 +32,7 @@ export default function Sidebar({ items, active, onSelect, note, back, className
             <Link
               to={back.to}
               data-sfx
-              className="group flex-shrink-0 inline-flex items-center gap-1.5 text-[14px] text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap py-3 md:py-0 md:mb-6"
+              className="group flex-shrink-0 inline-flex items-center gap-1.5 whitespace-nowrap my-3 md:my-0 md:mb-6 bg-gray-100/80 hover:bg-gray-200/70 text-gray-500 hover:text-gray-900 text-[13px] px-2.5 py-1 rounded-md transition-colors"
             >
               <span className="transition-transform duration-200 group-hover:-translate-x-0.5"><ArrowLeft /></span>
               {back.label}
