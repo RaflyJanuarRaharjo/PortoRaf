@@ -20,11 +20,11 @@ export default function Footer() {
   }
 
   return (
-    <motion.footer {...reveal} className="bg-white border-t border-gray-100 font-mono uppercase text-[12px] tracking-[0.04em] text-gray-900">
+    <motion.footer {...reveal} className="bg-white border-t border-gray-100 text-[14px] text-gray-600">
       <div className="max-w-5xl mx-auto px-6 pt-12 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 items-start">
           {/* Kiri */}
-          <div className="space-y-5 text-center md:text-left leading-[1.5] order-2 md:order-1">
+          <div className="space-y-4 text-center md:text-left leading-[1.6] order-2 md:order-1">
             {footer.left.map((lines) => (
               <p key={lines[0]}>
                 {lines[0]}
@@ -53,7 +53,7 @@ export default function Footer() {
                 onChange={(e) => setMsg(e.target.value)}
                 placeholder={footer.ctaPlaceholder}
                 aria-label={footer.ctaPlaceholder}
-                className="flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400 uppercase text-[12px] tracking-[0.04em] py-1"
+                className="flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400 text-[14px] text-gray-900 py-1"
               />
               <button
                 type="submit"
@@ -69,8 +69,8 @@ export default function Footer() {
               <nav className="flex items-center gap-2">
                 {socials.map((s, i) => (
                   <span key={s.label} className="flex items-center gap-2">
-                    {i > 0 && <span className="text-gray-400">·</span>}
-                    <a href={s.url} target="_blank" rel="noopener" data-sfx className="hover:opacity-50 transition-opacity">
+                    {i > 0 && <span className="text-gray-300">·</span>}
+                    <a href={s.url} target="_blank" rel="noopener" data-sfx className="text-gray-500 hover:text-gray-900 transition-colors">
                       {s.label}
                     </a>
                   </span>
@@ -82,8 +82,8 @@ export default function Footer() {
 
         {/* Bawah tengah */}
         <div className="text-center mt-12 space-y-2">
-          <p>{footer.title}</p>
-          <p className="text-gray-400">©{footer.year} · All rights reserved</p>
+          <p className="text-gray-900 font-medium">{footer.title}</p>
+          <p className="text-[13px] text-gray-400">© {footer.year} · All rights reserved</p>
         </div>
       </div>
     </motion.footer>
