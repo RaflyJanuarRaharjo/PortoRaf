@@ -35,7 +35,7 @@ export default function Projects() {
                 <p className="text-gray-500 text-[14.5px] mt-1 leading-[1.6]">{p.description}</p>
                 {p.tags?.length > 0 && <p className="text-gray-400 text-[13px] mt-2">{p.tags.join(' · ')}</p>}
               </div>
-              <span className="flex-shrink-0 inline-flex items-center gap-1 text-[14px] text-gray-500 group-hover:text-gray-900 transition-colors whitespace-nowrap">
+              <span className="flex-shrink-0 inline-flex items-center gap-1 whitespace-nowrap bg-gray-100/80 group-hover:bg-gray-200/70 text-gray-500 group-hover:text-gray-900 text-[13px] px-2.5 py-1 rounded-md transition-colors">
                 View case <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
               </span>
             </div>
